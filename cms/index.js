@@ -46,7 +46,8 @@ function actions(answers) {
 
     case 'viewRole': {
       const role = new Role();
-      role.view().then(function() {
+      role.getData().then(function(data) {
+        console.table(data);
         init();
       });
       break
@@ -54,7 +55,8 @@ function actions(answers) {
 
     case 'viewEmployee': {
       const employee = new Employee();
-      employee.view().then(function() {
+      employee.getData().then(function(data) {
+        console.table(data);
         init();
       });
       break
@@ -71,6 +73,15 @@ function actions(answers) {
     case 'addRole': {
       const role = new Role();
       role.add().then(function() {
+        init();
+      });
+      break
+    }
+
+
+    case 'addEmployee': {
+      const employee = new Employee();
+      employee.add().then(function() {
         init();
       });
       break

@@ -3,7 +3,7 @@ const connection = require('./connection.js');
 const Department = require('./department.js');
 
 class Role {
-  view() {
+  getData() {
     return new Promise((resolve, reject) => {
       connection().query(
         'SELECT * FROM `role`',
@@ -12,12 +12,13 @@ class Role {
             reject(err);
           }
 
-          console.table(results.map(item => ({
+          const data = results.map(item => ({
             id: item.id,
             title: item.title,
             salary: item.salary,
-          })));
-          resolve();
+          }));
+
+          resolve(data);
         }
       );
     })
